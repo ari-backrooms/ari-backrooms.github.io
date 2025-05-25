@@ -1,0 +1,94 @@
+header {
+    position: sticky;
+    top: 0;
+    background: #588593;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2rem #0005;
+}
+
+div#titles {
+    width: 100%;
+}
+
+div#titles h1 {
+    font-size: 1.2rem;
+    position: relative;
+    left: 1.2rem;
+    margin-bottom: 0.2rem;
+    color: white;
+}
+
+div#titles h2 {
+    font-size: .95rem;
+    position: relative;
+    left: 1.2rem;
+    color: white;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+}
+
+div#page-chooses {
+    border-top: 1px solid #0002;
+    min-height: 3.2rem;
+}
+
+content {
+    background: #06061c;
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+content {
+    min-height: 100vh;
+    display: block;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+div#page-title {
+    font-size: 2rem;
+    border-bottom: 1px solid white;
+    height: 3rem;
+    padding: 0 .5rem;
+    font-weight: 900;
+}
+
+div#page-content {
+    min-height: 100vh;
+}
+
+div#page-tags {
+    height: 2rem;
+    width: 100%;
+}
+
+div#page-bottom-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+div#page-button {
+    background: #8abbcb;
+    padding: .2rem .5rem;
+    border-radius: .2rem;
+    font-weight: 100;
+    transition: background-color .2s;
+}
+
+div#page-button:hover {
+    background: #8de0fb;
+}
