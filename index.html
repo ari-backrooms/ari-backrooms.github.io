@@ -26,6 +26,15 @@
         </div>
       </content>
     </main>
-    <script>$(document).ready(function(){ari.load('/index')})</script>
+    <script>
+      $(document).ready(function(){
+        ari.load('/index',{
+          title: '主页',
+          content: `
+            + 欢迎来到ARI WIKI！
+          `
+        })
+      })
+    </script>
   </body>
 </html>
