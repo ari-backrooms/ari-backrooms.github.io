@@ -1,4 +1,4 @@
-(function(){
+$(document).ready(function(){
   var ari = window.ari = {};
   ari.load = (a,t) => {
     if (!t) t = {title:"",text:""}
@@ -21,4 +21,4 @@
   ari.compiled = (x) => {
     return x; // do later
   }
-})()
+})
