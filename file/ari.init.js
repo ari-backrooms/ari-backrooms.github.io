@@ -5,7 +5,7 @@
     if (!t) t = {title:"",text:""}
     document.title = 'ARI BACKROOMS WIKI ' + a;
     $g('div#page-content').html(ari.compiled(t));
-    return 'Get Success!";
+    return 'Get Success!';
   }
   ari.get = async (a) => {
     return await $g.ajax({
