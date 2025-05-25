@@ -3,7 +3,10 @@
   ari.load = (a,t) => {
     if (!t) t = {title:"",text:""}
     document.title = 'ARI BACKROOMS WIKI ' + a;
-    $('div#page-content').html(ari.compiled(t));
+    $('div#page-title').html(ari.compiled(t.title));
+    $('div#page-content').html(ari.compiled(t.text));
+    $('div#page-title').attr('data-type','ok');
+    $('div#page-content').attr('data-type','ok');
     return 'Get Success!';
   }
   ari.get = async (a) => {
