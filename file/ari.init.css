@@ -92,3 +92,15 @@ div#page-button {
 div#page-button:hover {
     background: #8de0fb;
 }
+
+header {
+    height: 16vh;
+}
+
+div#titles {
+    height: 50%;
+}
+
+div#titles h1 {
+    font-size: 3vh;
+}
