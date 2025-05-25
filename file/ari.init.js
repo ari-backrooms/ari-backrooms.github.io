@@ -1,14 +1,13 @@
 (function(){
-  var $g = $,$ = null;
   var ari = window.ari = {};
   ari.load = (a,t) => {
     if (!t) t = {title:"",text:""}
     document.title = 'ARI BACKROOMS WIKI ' + a;
-    $g('div#page-content').html(ari.compiled(t));
+    $('div#page-content').html(ari.compiled(t));
     return 'Get Success!';
   }
   ari.get = async (a) => {
-    return await $g.ajax({
+    return await $.ajax({
       get: location.origin + '/' + a,
       type: 'GET',
       success: function(t){
