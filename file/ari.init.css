@@ -98,9 +98,18 @@ header {
 }
 
 div#titles {
-    height: 50%;
+    height: 65%;
 }
 
 div#titles h1 {
     font-size: 3vh;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+div#page-title {
+    text-align: center;
 }
