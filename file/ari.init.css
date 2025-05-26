@@ -123,3 +123,23 @@ blockquote {
     line-height: 2;
     font-weight: 100;
 }
+
+*[data-type=loading]::before {
+    background: #fff8;
+    content: '';
+    width: 11rem;
+    height: 2rem;
+    position: absolute;
+    opacity: 1;
+    top: .2rem;
+    left: 2rem;
+}
+
+*[data-type=loading] {
+    position: relative;
+    overflow: hidden;
+}
+
+div#page-tags {
+    margin-bottom: 1rem;
+}
