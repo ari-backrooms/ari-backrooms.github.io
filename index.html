@@ -7,6 +7,7 @@
     <title>ARI BACKROOMS WIKI</title>
   </head>
   <body id="ari-backrooms-wiki">
+    <!-- ARI: main -->
     <main>
       <header>
         <div id="titles">
@@ -26,15 +27,17 @@
         </div>
       </content>
     </main>
+    <!-- ARI: others-->
     <script>
       $(document).ready(function(){
         ari.load('/index',{
           title: '主页',
-          text: `
-            + 欢迎来到ARI WIKI！
-          `
+          text: `<span style="text-align:center">
++ 欢迎来到ARI WIKI!
+            </span>`
         })
       })
     </script>
+    <iframe hidden id="gets-somt-iframe"></iframe>
   </body>
 </html>
