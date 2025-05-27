@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="./file/ari.init.css">
+    <script src="./file/ari.init.js"></script>
+    <title>ARI BACKROOMS WIKI</title>
+  </head>
+  <body id="ari-backrooms-wiki">
+    <!-- ARI: main -->
+    <main>
+      <header>
+        <div id="titles">
+            <h1>ARI BACKROOMS WIKI</h1>
+            <h2>A-sync资料库</h2>
+        </div>
+        <div id="page-chooses" data-type="loading"></div>
+      </header>
+      <content>
+        <div id="page-title" data-type="loading"></div>
+        <div id="page-content" data-type="loading"></div>
+        <div id="page-tags" data-type="loading"></div>
+        <div id="page-bottom-buttons">
+          <div id="page-button" edit-button>编辑</div>
+          <div id="page-button" tags-button>标签</div>
+          <div id="page-button" source-button>查看源码</div>
+        </div>
+      </content>
+    </main>
+    <!-- ARI: others-->
+    <script>
+      $(document).ready(function(){
+        ari.load('/nav:top',{
+          title: '顶栏',
+          text: `[[div class="NAV-TOP"]]
+          [[div class="NAV-TOP-COM"]]
+          [[span]]图书馆[[/span]]
+          [[div class="NAV-TOP-COM"]]
+          [[[level|层级]]]
+          [[[entity|实体]]]
+          [[[area|区域]]]
+          [[[scps:0|SCP 系列 0]]]
+          [[[scps-tales:0| SCP 故事 0]]]
+          [[[tales|故事]]]
+          [[[jokes|搞笑文章]]]
+          [[/div]]
+          [[div class="NAV-TOP-COM"]]
+          [[span]]指导[[/span]]
+          [[div class="NAV-TOP-COM"]]
+          [[[guides:start|指导首页]]]
+          [[/div]]
+          [[/div]]
+          [[/div]]
+          [[/div]]`
+        })
+      })
+    </script>
+    <iframe hidden id="gets-somt-iframe"></iframe>
+  </body>
+</html>
