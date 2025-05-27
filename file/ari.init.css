@@ -143,3 +143,13 @@ blockquote {
 div#page-tags {
     margin-bottom: 1rem;
 }
+
+a {
+    text-decoration: none;
+    color: yellow;
+    font-weight: 100;
+}
+
+a:hover {
+    color: lightyellow;
+}
