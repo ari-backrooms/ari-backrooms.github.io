@@ -25,7 +25,6 @@ $(document).ready(function() {
                 url: location.origin + '/' + pageName,
                 type: 'GET'
             });
-            ari.pageCache[pageName] = response;
             return response;
         } catch (error) {
             console.error('Failed to load page:', pageName, error);
