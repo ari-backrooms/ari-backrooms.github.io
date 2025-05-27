@@ -40,6 +40,7 @@ $(document).ready(function() {
         $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
         var t = eval(`(${'{' + $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script').innerHTML.split('{')[2].split('}')[0].slice(1,-2) + '}'})`)
        $('#page-chooses').html(t.text)
+       $('#page-chooses').attr('data-type','ok');
     })
     ari.user = {}
 });
