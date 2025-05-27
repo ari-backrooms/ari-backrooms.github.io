@@ -32,26 +32,26 @@
       $(document).ready(function(){
         ari.load('/nav:top',{
           title: '顶栏',
-          text: `[[div class="NAV-TOP"]]
-          [[div class="NAV-TOP-COM"]]
-          [[span]]图书馆[[/span]]
-          [[div class="NAV-TOP-COM"]]
-          [[[level|层级]]]
-          [[[entity|实体]]]
-          [[[area|区域]]]
-          [[[scps:0|SCP 系列 0]]]
-          [[[scps-tales:0| SCP 故事 0]]]
-          [[[tales|故事]]]
-          [[[jokes|搞笑文章]]]
-          [[/div]]
-          [[div class="NAV-TOP-COM"]]
-          [[span]]指导[[/span]]
-          [[div class="NAV-TOP-COM"]]
-          [[[guides:start|指导首页]]]
-          [[/div]]
-          [[/div]]
-          [[/div]]
-          [[/div]]`
+          text: `<div class="NAV-TOP">
+          <div class="NAV-TOP-COM">
+          <span>图书馆</span>
+          <div class="NAV-TOP-COM">
+          <a href="../level">层级</a>
+          <a href="../entity">实体</a>
+          <a href="../area">区域</a>
+          <a href="../scp:0">SCP 系列 0</a>
+          <a href="../scptales:0">SCP 故事 0</a>
+          <a href="../tales">故事</a>
+          <a href="../jokes">搞笑故事</a>
+          </div>
+          <div class="NAV-TOP-COM">
+          <span>指导</span>
+          <div class="NAV-TOP-COM">
+          <a href="../guides:start">指导首页</a>
+          </div>
+          </div>
+          </div>
+          </div>`
         })
       })
     </script>
