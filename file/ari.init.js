@@ -35,6 +35,11 @@ $(document).ready(function() {
     ari.compiled = (t) => {
         return t;
     }
-    
-    ari.user = {};
+    // THE NAV
+    ari.get('nav:top').then((r)=>{
+        $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
+        var t = eval(`(${'{' + $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script').innerHTML.split('{')[2].split('}')[0].slice(1,-2) + '}'})`)
+       $('#page-chooses').html(t.text)
+    })
+    ari.user = {}
 });
