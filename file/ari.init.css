@@ -94,7 +94,7 @@ div#page-button:hover {
 }
 
 header {
-    height: 16vh;
+    height: /* OLD: 16vh*/ 9.142857rem; /* FIXED THE MOBILE ERROR*/
 }
 
 div#titles {
