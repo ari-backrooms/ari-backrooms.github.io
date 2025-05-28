@@ -226,3 +226,7 @@ a:hover {
 .NAV-TOP > .NAV-TOP-COM {
     width: 18rem;
 }
+
+.NAV-TOP a {
+    color: #222;
+}
