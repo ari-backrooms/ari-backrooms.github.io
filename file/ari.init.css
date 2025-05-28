@@ -237,6 +237,6 @@ div#page-title {
     font-weight: 100;
 }
 
-header .NAV-TOP>.NAV-TOP-COM>span {font-size:3vh}
+header .NAV-TOP>.NAV-TOP-COM>span {font-size:150%}
 
 header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>:is(span,a) {font-weight:100}
