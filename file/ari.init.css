@@ -194,7 +194,7 @@ header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>:is(span,a) {
 header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM {
     position: absolute;
     left: 9rem;
-    top: 5.5vh;
+    top: /* OLD: 5.5vh*/ 3rem;
     border-left: 1px solid #0002;
     display: grid;
     grid-template-columns: 1fr 1fr;
