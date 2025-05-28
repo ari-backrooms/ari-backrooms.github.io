@@ -153,12 +153,12 @@ a {
 a:hover {
     color: lightyellow;
 }
-.NAV-TOP {
+header .NAV-TOP {
     display: flex;
     justify-content: center;
 }
 
-.NAV-TOP>.NAV-TOP-COM>span {
+header .NAV-TOP>.NAV-TOP-COM>span {
     font-size: 1.5rem;
     font-weight: 100;
     line-height: 2;
@@ -166,7 +166,7 @@ a:hover {
     text-align: center;
 }
 
-.NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
+header .NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
     height: 0;
     background: #eee;
     left: -3em;
@@ -175,23 +175,23 @@ a:hover {
     transition: height .5s;
 }
 
-.NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
+header .NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-.NAV-TOP > .NAV-TOP-COM> span:hover ~ .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > span ~ .NAV-TOP-COM:hover, .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(span:hover), .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(.NAV-TOP-COM:hover) {
+header .NAV-TOP > .NAV-TOP-COM> span:hover ~ .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > span ~ .NAV-TOP-COM:hover, .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(span:hover), .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(.NAV-TOP-COM:hover) {
     height: 100%;
 }
 
-.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>:is(span,a) {
+header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>:is(span,a) {
     border-bottom: 1px solid #0002;
     width: 100%;
     display: block;
     padding: .2rem .3rem;
 }
 
-.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM {
+header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM {
     position: absolute;
     left: 9rem;
     top: 5.5vh;
@@ -201,11 +201,11 @@ a:hover {
     overflow: hidden;
 }
 
-.NAV-TOP>.NAV-TOP-COM {
+header .NAV-TOP>.NAV-TOP-COM {
     position: relative;
 }
 
-.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM a {
+header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM a {
     color: black;
     border-bottom: 1px solid black;
     width: 50%;
@@ -214,19 +214,19 @@ a:hover {
     padding: .2rem;
 }
 
-.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span:hover + .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > .NAV-TOP-COM:hover {
+header .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span:hover + .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > .NAV-TOP-COM:hover {
     height: 100%;
     transition: height .5s;
 }
 
-.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span + .NAV-TOP-COM {
+header .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span + .NAV-TOP-COM {
     transition: height 1s .5s;
 }
 
-.NAV-TOP > .NAV-TOP-COM {
+header .NAV-TOP > .NAV-TOP-COM {
     width: 18rem;
 }
 
-.NAV-TOP a {
+header .NAV-TOP a {
     color: #222;
 }
