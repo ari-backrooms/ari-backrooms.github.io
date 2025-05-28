@@ -219,10 +219,10 @@ a:hover {
     transition: height .5s;
 }
 
-.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > .NAV-TOP-COM:hover {
-    background: red;
-}
-
 .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span + .NAV-TOP-COM {
     transition: height 1s .5s;
+}
+
+.NAV-TOP > .NAV-TOP-COM {
+    width: 18rem;
 }
