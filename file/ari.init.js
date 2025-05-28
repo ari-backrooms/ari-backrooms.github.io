@@ -6,6 +6,30 @@ $(document).ready(function() {
     });
 
     var ari = window.ari = {};
+    ari.saveArticleToGitHub(owner, repo, path, content, token, sha = null) {
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const message = sha ? '更新文章' : '添加新文章';
+      
+      const data = {
+        message: message,
+        content: btoa(content)
+      };
+      
+      if (sha) {
+        data.sha = sha;
+      }
+      
+      return $.ajax({
+        url: apiUrl,
+        type: 'PUT',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        data: JSON.stringify(data)
+      });
+    }
+
     ari.load = function(pageName, pageData) {
         if (!pageData) pageData = { title: "", text: "" };
         document.title = 'ARI BACKROOMS WIKI ' + pageName;
