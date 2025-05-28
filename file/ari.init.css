@@ -153,3 +153,76 @@ a {
 a:hover {
     color: lightyellow;
 }
+.NAV-TOP {
+    display: flex;
+    justify-content: center;
+}
+
+.NAV-TOP>.NAV-TOP-COM>span {
+    font-size: 1.5rem;
+    font-weight: 100;
+    line-height: 2;
+    color: white;
+    text-align: center;
+}
+
+.NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
+    height: 0;
+    background: #eee;
+    left: -3em;
+    text-align: center;
+    width: 9rem;
+    transition: height .5s;
+}
+
+.NAV-TOP .NAV-TOP-COM span ~ .NAV-TOP-COM {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.NAV-TOP > .NAV-TOP-COM> span:hover ~ .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > span ~ .NAV-TOP-COM:hover, .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(span:hover), .NAV-TOP-COM > span ~ .NAV-TOP-COM:has(.NAV-TOP-COM:hover) {
+    height: 100%;
+}
+
+.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>:is(span,a) {
+    border-bottom: 1px solid #0002;
+    width: 100%;
+    display: block;
+    padding: .2rem .3rem;
+}
+
+.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM {
+    position: absolute;
+    left: 9rem;
+    top: 5.5vh;
+    border-left: 1px solid #0002;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
+.NAV-TOP>.NAV-TOP-COM {
+    position: relative;
+}
+
+.NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM a {
+    color: black;
+    border-bottom: 1px solid black;
+    width: 50%;
+    height: max-content;
+    width: 100%;
+    padding: .2rem;
+}
+
+.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span:hover + .NAV-TOP-COM, .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > .NAV-TOP-COM:hover {
+    height: 100%;
+    transition: height .5s;
+}
+
+.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > .NAV-TOP-COM:hover {
+    background: red;
+}
+
+.NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span + .NAV-TOP-COM {
+    transition: height 1s .5s;
+}
