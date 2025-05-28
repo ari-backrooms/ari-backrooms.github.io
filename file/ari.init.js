@@ -33,7 +33,21 @@ $(document).ready(function() {
     };
 
     ari.compiled = (t) => {
-        return t;
+        t = document.createRange().createContextualFragment('<tp-ari-compiled>' + t + '</tp-ari-compiled>');
+        let f = t.querySelectorAll('tp-ari-compiled *');
+        let urlDescription = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1];
+        for (var i = 0;i < f.length;i++) {
+            if (urlDescription.split(':')[0] !== 'component' && f[i].tagName === 'SCRIPT') {f[i].outerHTML = '';} // NONE XSS
+            if (f[i].tagName !== 'STYLE' && f[i].tagName !== 'DIV' && f[i].tagName !== 'SPAN' && f[i].tagName !== 'UL' && f[i].tagName !== 'OL' && f[i].tagName !== 'LI' && f[i].tagName !== 'TABLE' && f[i].tagName !== 'TBODY' && f[i].tagName !== 'TR' && f[i].tagName !== 'THEAD' && f[i].tagName !== 'TH'
+               && f[i].tagName !== 'H1' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE') {
+                // out of the tag limit
+                f[i].outerHTML = '';
+            }
+            if (f[i].id !== '' && !f[i].id.startsWith('U-')) {
+                f[i].id = 'U-' + f[i].id;
+            }
+        }
+        return t.querySelector('tp-ari-compiled').innerHTML;
     }
     // THE NAV
     ari.get('nav:top').then((r)=>{
