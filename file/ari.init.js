@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     var ari = window.ari = {};
-    ari.saveArticleToGitHub(owner, repo, path, content, token, sha = null) {
+    ari.saveArticleToGitHub = function(owner, repo, path, content, token, sha = null) {
       const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
       const message = sha ? '更新文章' : '添加新文章';
       
