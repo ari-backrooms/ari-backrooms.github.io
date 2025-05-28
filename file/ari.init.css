@@ -230,3 +230,8 @@ header .NAV-TOP > .NAV-TOP-COM {
 header .NAV-TOP a {
     color: #222;
 }
+
+div#page-title {
+    padding-top: 2rem;
+    font-weight: 100;
+}
