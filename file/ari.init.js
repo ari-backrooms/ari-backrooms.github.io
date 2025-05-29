@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     var ari = window.ari = {};
     ari.saveArticleToGitHub = function(owner, repo, path, content, token, sha = null) {
-      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const apiUrl = `https://api.codetabs.com/v1/proxy/?quest=https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
       const message = sha ? '更新文章' : '添加新文章';
       
       const data = {
@@ -30,7 +30,7 @@ $(document).ready(function() {
       });
     }
    ari.getRawArticleFromGitHub = function(owner, repo, branch, path) {
-      const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
+      const rawUrl = `https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
       
       return $.ajax({
         url: rawUrl,
@@ -96,9 +96,9 @@ $(document).ready(function() {
     })
     ari.user = {}
     
-    $('div#page-button[edit-button]').on('click',ari.user.edit);
-    $('div#page-button[tags-button]').on('click',ari.user.tag);
-    $('div#page-button[source-button]').on('click',ari.user.source);
+    $('div#page-button[edit-button]').on('click',function(){ari.user.edit()});
+    $('div#page-button[tags-button]').on('click',function(){ari.user.tag()});
+    $('div#page-button[source-button]').on('click',function(){ari.user.source()});
 
     ari.user.edit = () => {
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
