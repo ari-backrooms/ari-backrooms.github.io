@@ -110,6 +110,7 @@ $(document).ready(function() {
             $('div#edit-action').fadeIn(500);
             r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
             $('div#edit-action textarea#edit-content').html(r.text);
+            $('div#edit-action input#edit-title').html(r.title);
         });
     }
 });
