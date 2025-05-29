@@ -275,3 +275,30 @@ div#contentText {
     align-items: center;
     font-weight: 100;
 }
+
+div#edit-action {
+    position: fixed;
+    inset: 10vmin;
+    background: #0002;
+    backdrop-filter: blur(7rem) brightness(1.5);
+    border: 3px solid white;
+}
+
+input#edit-title {
+    width: 50%;
+    padding: .7rem .5rem;
+    display: flex;
+    margin: 2rem auto;
+    outline: none;
+    font-weight: 100;
+    font-family: none;
+}
+
+textarea#edit-content {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    font-family: auto;
+    font-weight: 199;
+}
