@@ -252,3 +252,26 @@ header .NAV-TOP>.NAV-TOP-COM>.NAV-TOP-COM>.NAV-TOP-COM a:hover {
 header .NAV-TOP > .NAV-TOP-COM > .NAV-TOP-COM > span + .NAV-TOP-COM {
     transition: height .5s;
 }
+
+div#login-status {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+}
+
+div#headimage {
+    height: 2rem;
+    aspect-ratio: 1;
+    background: white;
+}
+
+div#contentText {
+    width: 5rem;
+    border: 1px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+}
