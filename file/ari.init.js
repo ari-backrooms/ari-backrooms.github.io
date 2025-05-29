@@ -95,4 +95,19 @@ $(document).ready(function() {
        $('#page-chooses').attr('data-type','ok');
     })
     ari.user = {}
+    
+    $('div#page-button[edit-button]').on('click',ari.user.edit);
+    $('div#page-button[tags-button]').on('click',ari.user.tag);
+    $('div#page-button[source-button]').on('click',ari.user.source);
+
+    ari.user.edit = () => {
+        let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
+        if (PageURL.at(-1) === '/') PageURL += 'index.html';
+        $('body').append('<div id="edit-action"><input type="text" id="edit-title"><textarea id="edit-content"></textarea></div>')
+        ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
+            r = document.createRange().createContextualFragment(r);
+            r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
+            $('div#edit-action textarea#edit-content').html(r.text);
+        });
+    }
 });
