@@ -103,9 +103,11 @@ $(document).ready(function() {
     ari.user.edit = () => {
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
-        $('body').append('<div id="edit-action"><input type="text" id="edit-title"><textarea id="edit-content"></textarea></div>')
+        $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea></div>')
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
             r = document.createRange().createContextualFragment(r);
+            $('#page-bottom-buttons').remove();
+            $('#edit-button').show(500);
             r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
             $('div#edit-action textarea#edit-content').html(r.text);
         });
