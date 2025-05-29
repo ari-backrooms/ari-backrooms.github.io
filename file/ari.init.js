@@ -29,6 +29,20 @@ $(document).ready(function() {
         data: JSON.stringify(data)
       });
     }
+   ari.getRawArticleFromGitHub = function(owner, repo, branch, path) {
+      const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
+      
+      return $.ajax({
+        url: rawUrl,
+        type: 'GET',
+        success: function(content) {
+          return content;
+        },
+        error: function(xhr, status, error) {
+          console.error('Failed of this file:', error);
+        }
+      });
+    }
 
     ari.load = function(pageName, pageData) {
         if (!pageData) pageData = { title: "", text: "" };
