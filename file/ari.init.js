@@ -107,7 +107,7 @@ $(document).ready(function() {
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
             r = document.createRange().createContextualFragment(r);
             $('#page-bottom-buttons').remove();
-            $('#edit-button').fadeIn(500);
+            $('div#edit-action').fadeIn(500);
             r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
             $('div#edit-action textarea#edit-content').html(r.text);
         });
