@@ -112,6 +112,24 @@ $(document).ready(function() {
             r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
             $('div#edit-action textarea#edit-content').html(r.text);
             $('div#edit-action input#edit-title').val(r.title);
+            $('button#cancel').on('click', () => {
+                location.reload();
+            })
+            $('button#preview').on('click', () => {
+                $('#edit-action').attr('class','closed');
+                ari.load('(EDITING PAGE PREVIEW)',{
+                    title: $('input#edit-title').val(),
+                    text: ari.compiled($('textarea#edit-content').val())
+                })
+                setTimeout(function(){
+                    $('#edit-action')[0].onclick = function(){
+                        if ($(this).attr('class') === 'closed') {
+                            $(this).attr('class','');
+                        }
+                        setTimeout(function(){$('#edit-action')[0].onclick = null;},50)
+                    }
+                },500)
+            })
         });
     }
 });
