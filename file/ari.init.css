@@ -302,3 +302,38 @@ textarea#edit-content {
     font-family: auto;
     font-weight: 199;
 }
+
+/* 2025/5/30 */
+div#tools {
+    padding: 0 2rem;
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+
+div#tools button {
+    width: 100%;
+    padding: .35rem 1.2rem;
+    background: darkblue;
+    border: none;
+    color: white;
+    margin: 2rem;
+    font-weight: 100;
+    transition: all .5s;
+}
+
+div#tools button:hover {
+    background: #0606b5;
+    box-shadow: 0 0 .5rem #fff2;
+}
+
+div#page-button {
+    min-width: 10vw;
+    text-align: center;
+    min-height: 2.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
