@@ -6,6 +6,7 @@ $(document).ready(function() {
     });
 
     var ari = window.ari = {};
+    ari.componentsList = {};
     ari.saveArticleToGitHub = function(owner, repo, path, content, token, sha = null) {
       const apiUrl = `https://api.codetabs.com/v1/proxy/?quest=https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
       const message = sha ? '更新文章' : '添加新文章';
@@ -77,7 +78,7 @@ $(document).ready(function() {
         for (var i = 0;i < f.length;i++) {
             if (urlDescription.split(':')[0] !== 'component' && f[i].tagName === 'SCRIPT') {f[i].outerHTML = '';} // NONE XSS
             if (f[i].tagName !== 'STYLE' && f[i].tagName !== 'DIV' && f[i].tagName !== 'SPAN' && f[i].tagName !== 'UL' && f[i].tagName !== 'OL' && f[i].tagName !== 'LI' && f[i].tagName !== 'TABLE' && f[i].tagName !== 'TBODY' && f[i].tagName !== 'TR' && f[i].tagName !== 'THEAD' && f[i].tagName !== 'TH'
-               && f[i].tagName !== 'H1' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P') {
+               && f[i].tagName !== 'H1' && f[i].tagName !== 'IMPORT' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P' && !ari.componentsList.includes(f[i].tagName.toLowerCase())) {
                 // out of the tag limit
                 f[i].outerHTML = '';
             }
@@ -103,7 +104,7 @@ $(document).ready(function() {
     ari.user.edit = () => {
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
-        $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea></div>')
+        $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea><div id="tools"><button id="cancel">取消</button><button id="preview">预览</button><button id="save">保存</button></div></div>')
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
             r = document.createRange().createContextualFragment(r);
             $('#page-bottom-buttons').remove();
