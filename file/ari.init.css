@@ -337,3 +337,37 @@ div#page-button {
     justify-content: center;
     align-items: center;
 }
+/* 2025/5/31 */
+div#edit-action.closed {
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    left: 95vw;
+    top: 2vh;
+    box-shadow: 0 0 2rem #0002;
+    border-radius: 50%;
+}
+
+div#edit-action {
+    transition: all .5s;
+}
+
+div#edit-action.closed::before {
+    content: '↑';
+    font-weight: 100;
+    color: white;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+div#edit-action.closed:hover {
+    background-color:aliceblue;
+    color:black!important;
+}
+
+div#edit-action.closed:hover::before {
+    color:black!important;
+}
