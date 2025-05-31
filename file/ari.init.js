@@ -102,10 +102,17 @@ $(document).ready(function() {
     $('div#page-button[source-button]').on('click',function(){ari.user.source()});
 
     ari.user.edit = () => {
+        window.onbeforeunload = (e) => {
+            const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
+            e.returnValue = MESSAGE;
+            return MESSAGE;
+        }
+        document.body.style.cursor = 'wait'
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
         $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea><div id="tools"><button id="cancel">取消</button><button id="preview">预览</button><button id="save">保存</button></div></div>')
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
+            document.body.style.cursor = ''
             r = document.createRange().createContextualFragment(r);
             $('#page-bottom-buttons').remove();
             $('div#edit-action').fadeIn(500);
@@ -116,11 +123,6 @@ $(document).ready(function() {
                 location.reload();
             })
             $('button#preview').on('click', () => {
-                window.onbeforeunload = (e) => {
-                    const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
-                    e.returnValue = MESSAGE;
-                    return MESSAGE;
-                }
                 $('#edit-action').attr('class','closed');
                 ari.load('(EDITING PAGE PREVIEW)',{
                     title: $('input#edit-title').val(),
