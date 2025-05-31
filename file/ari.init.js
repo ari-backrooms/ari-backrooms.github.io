@@ -78,7 +78,7 @@ $(document).ready(function() {
         for (var i = 0;i < f.length;i++) {
             if (urlDescription.split(':')[0] !== 'component' && f[i].tagName === 'SCRIPT') {f[i].outerHTML = '';} // NONE XSS
             if (f[i].tagName !== 'STYLE' && f[i].tagName !== 'DIV' && f[i].tagName !== 'SPAN' && f[i].tagName !== 'UL' && f[i].tagName !== 'OL' && f[i].tagName !== 'LI' && f[i].tagName !== 'TABLE' && f[i].tagName !== 'TBODY' && f[i].tagName !== 'TR' && f[i].tagName !== 'THEAD' && f[i].tagName !== 'TH'
-               && f[i].tagName !== 'H1' && f[i].tagName !== 'IMPORT' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P' && !ari.componentsList.includes(f[i].tagName.toLowerCase())) {
+               && f[i].tagName !== 'H1' && f[i].tagName !== 'IMPORT' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P') {
                 // out of the tag limit
                 f[i].outerHTML = '';
             }
@@ -116,6 +116,11 @@ $(document).ready(function() {
                 location.reload();
             })
             $('button#preview').on('click', () => {
+                window.onbeforeunload = (e) => {
+                    const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
+                    e.returnValue = MESSAGE;
+                    return MESSAGE;
+                }
                 $('#edit-action').attr('class','closed');
                 ari.load('(EDITING PAGE PREVIEW)',{
                     title: $('input#edit-title').val(),
