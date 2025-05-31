@@ -120,6 +120,7 @@ $(document).ready(function() {
             $('div#edit-action textarea#edit-content').html(r.text);
             $('div#edit-action input#edit-title').val(r.title);
             $('button#cancel').on('click', () => {
+                window.onbeforeunload = null;
                 location.reload();
             })
             $('button#preview').on('click', () => {
