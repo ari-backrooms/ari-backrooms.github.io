@@ -140,4 +140,5 @@ $(document).ready(function() {
             })
         });
     }
+    $('head').append('<script src="history.js"></script>')
 });
