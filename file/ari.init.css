@@ -346,6 +346,7 @@ div#edit-action.closed {
     top: 2vh;
     box-shadow: 0 0 2rem #0002;
     border-radius: 50%;
+    transition: all .5s;
 }
 
 div#edit-action {
