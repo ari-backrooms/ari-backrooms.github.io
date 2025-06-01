@@ -28,8 +28,17 @@
       </content>
     </main>
     <!-- ARI: others-->
+    <script data-type="404">
+      $(document).ready(function(){
+        ari.load('/_404',{
+          title: '',
+          text: ``
+        })
+      })
+    </script>
     <script>
       $(document).ready(function(){
+        // 404 OUT: {}
         ari.load('/_404',{
           title: '页面不存在！',
           text: `<span style="text-align:center">
