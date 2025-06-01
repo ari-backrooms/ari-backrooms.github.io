@@ -141,4 +141,12 @@ $(document).ready(function() {
         });
     }
     $('head').append('<script src="history.js"></script>')
+    if (!localStorage.login_0x88) {
+        $('#headimage').css({width:'66.66667%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center'})
+        $('#headimage').html('登录');
+        $('#contentText').html('注册')
+    }
 });
