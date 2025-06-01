@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="./file/ari.init.css">
+    <script src="./file/ari.init.js"></script>
+    <title>ARI BACKROOMS WIKI</title>
+  </head>
+  <body id="ari-backrooms-wiki">
+    <!-- ARI: main -->
+    <main>
+      <header>
+        <div id="titles">
+            <h1>ARI BACKROOMS WIKI</h1>
+            <h2>A-sync资料库</h2>
+        </div>
+        <div id="page-chooses" data-type="loading"></div>
+        <div id="login-status">
+          <div id="headimage"></div>
+          <div id="contentText"></div>
+        </div>
+      </header>
+      <content>
+        <div id="page-title" data-type="loading"></div>
+        <div id="page-content" data-type="loading"></div>
+        <div id="page-tags" data-type="loading"></div>
+        <div id="page-bottom-buttons">
+          <div id="page-button" edit-button>编辑</div>
+          <div id="page-button" tags-button>标签</div>
+          <div id="page-button" source-button>查看源码</div>
+        </div>
+      </content>
+    </main>
+    <!-- ARI: others-->
+    <script>
+      $(document).ready(function(){
+        ari.load('/_404',{
+          title: '页面不存在！',
+          text: `<span style="text-align:center">
+<h1> 你的页面不存在！ </h1>
+            </span>
+            <blockquote>
+            如果你想建立页面，请点击<a href="javascript:ari.user.edit();">此</a>按钮
+            </blockquote>`
+        })
+      })
+    </script>
+    <iframe hidden id="gets-somt-iframe"></iframe>
+  </body>
+</html>
