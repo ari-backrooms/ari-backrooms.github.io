@@ -160,5 +160,12 @@ $(document).ready(function() {
                 location.reload();
             }
         })
+    } else {
+         var t = setInterval(function(){
+            if (!localStorage.login_0x88) {
+                clearInterval(t)
+                location.reload();
+            }
+        })
     }
 });
