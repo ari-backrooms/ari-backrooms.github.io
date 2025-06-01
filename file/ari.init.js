@@ -148,5 +148,17 @@ $(document).ready(function() {
                             alignItems: 'center'})
         $('#headimage').html('登录');
         $('#contentText').html('注册')
+        $('#headimage').on('click',function(){
+            window.open(location.origin + '/gets.noneuser/login');
+        })
+        $('#contentText').on('click',function(){
+            window.open(location.origin + '/gets.noneuser/register');
+        })
+        var t = setInterval(function(){
+            if (localStorage.login_0x88) {
+                clearInterval(t)
+                location.reload();
+            }
+        })
     }
 });
