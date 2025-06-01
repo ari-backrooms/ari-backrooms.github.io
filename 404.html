@@ -9,7 +9,7 @@
         var PageURLs = location.href.slice(location.origin.length,-1) + location.href.at(-1);
         if (PageURLs.at(-1) === '/') PageURLs += 'index.html';
         PageURLs = PageURLs.slice(1).split('/');
-        if (PageURLs.length === 1 && PageURLs[1] !== 'index.html' && PageURLs[0] !== 'gets.noneuser' && PageURLs[0] !== 'file') {
+        if (PageURLs.length === 2 && PageURLs[1] !== 'index.html' && PageURLs[0] !== 'gets.noneuser' && PageURLs[0] !== 'file') {
           location.href = location.origin + '/' + PageURLs[0];
         }
         if (PageURLs.length > 2) location.href = location.origin + '/' + PageURLs[0];
