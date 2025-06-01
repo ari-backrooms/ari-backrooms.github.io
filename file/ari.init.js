@@ -113,12 +113,17 @@ $(document).ready(function() {
         $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea><div id="tools"><button id="cancel">取消</button><button id="preview">预览</button><button id="save">保存</button></div></div>')
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
             document.body.style.cursor = ''
-            r = document.createRange().createContextualFragment(r);
+            try {r = document.createRange().createContextualFragment(r);}catch{}
             $('#page-bottom-buttons').remove();
             $('div#edit-action').fadeIn(500);
-            r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);
-            $('div#edit-action textarea#edit-content').html(r.text);
-            $('div#edit-action input#edit-title').val(r.title);
+            try { r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);} catch{}
+            try {
+                $('div#edit-action textarea#edit-content').html(r.text);
+                $('div#edit-action input#edit-title').val(r.title);
+            } catch {
+                $('div#edit-action textarea#edit-content').html('');
+                $('div#edit-action input#edit-title').val('');
+            }
             $('button#cancel').on('click', () => {
                 window.onbeforeunload = null;
                 location.reload();
