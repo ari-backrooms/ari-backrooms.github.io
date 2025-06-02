@@ -128,6 +128,9 @@ $(document).ready(function() {
                 $('div#edit-action textarea#edit-content').html('');
                 $('div#edit-action input#edit-title').val('');
             }
+            try {
+                $('div#edit-action input#edit-content').val($('div#edit-action input#edit-content').html());
+            } catch{}
             $('button#cancel').on('click', () => {
                 window.onbeforeunload = null;
                 location.reload();
