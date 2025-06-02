@@ -122,15 +122,12 @@ $(document).ready(function() {
                 r = eval(`(${k})`);
             } catch{}
             try {
-                $('div#edit-action textarea#edit-content').html(r.text);
+                $('div#edit-action textarea#edit-content').val(r.text);
                 $('div#edit-action input#edit-title').val(r.title);
             } catch {
-                $('div#edit-action textarea#edit-content').html('');
+                $('div#edit-action textarea#edit-content').val('');
                 $('div#edit-action input#edit-title').val('');
             }
-            try {
-                $('div#edit-action input#edit-content').val($('div#edit-action input#edit-content').html());
-            } catch{}
             $('button#cancel').on('click', () => {
                 window.onbeforeunload = null;
                 location.reload();
