@@ -376,3 +376,6 @@ div#edit-action.closed:hover::before {
 header {
     z-index: 9;
 }
+div#edit-action {
+    z-index: calc(Infinity);
+}
