@@ -4,6 +4,13 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="../file/ari.init.css">
     <script src="../file/ari.init.js"></script>
+    <script>
+      $(function(){
+        if (location.href !== '404/' && location.href !== '404/index.html') {
+          $('#page-bottom-buttons').html('')
+        }
+      })
+    </script>
     <title>ARI BACKROOMS WIKI</title>
   </head>
   <body id="ari-backrooms-wiki">
@@ -24,7 +31,11 @@
         <div id="page-title" data-type="loading"></div>
         <div id="page-content" data-type="loading"></div>
         <div id="page-tags" data-type="loading"></div>
-        <div id="none"></div>
+        <div id="page-bottom-buttons">
+          <div id="page-button" edit-button>编辑</div>
+          <div id="page-button" tags-button>标签</div>
+          <div id="page-button" source-button>查看源码</div>
+        </div>
       </content>
     </main>
     <!-- ARI: others-->
