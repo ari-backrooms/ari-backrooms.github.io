@@ -116,7 +116,11 @@ $(document).ready(function() {
             try {r = document.createRange().createContextualFragment(r);}catch{}
             $('#page-bottom-buttons').remove();
             $('div#edit-action').fadeIn(500);
-            try { r = eval(`(${'{' + r.querySelector('main ~ script').innerHTML.split('{')[2].split('}')[0] + '}'})`);} catch{}
+            try { 
+                var v = ($('body script').eq(0).html().slice($('body script').eq(0).html().split('{')[0].length+$('body script').eq(0).html().split('{')[1].length,-1)); 
+                var k = v.slice(1,-1 - (v.split('}').at(-1).length+v.split('}').at(-2).length));
+                r = eval(`(${k})`);
+            } catch{}
             try {
                 $('div#edit-action textarea#edit-content').html(r.text);
                 $('div#edit-action input#edit-title').val(r.title);
