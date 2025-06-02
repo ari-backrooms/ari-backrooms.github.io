@@ -6,6 +6,7 @@
   <body>
     <script>
       (function(){
+        if (location.path === '/404') location.href = location.origin + '/404/index';
         var PageURLs = location.href.slice(location.origin.length,-1) + location.href.at(-1);
         if (PageURLs.at(-1) === '/') PageURLs += 'index.html';
         PageURLs = PageURLs.slice(1).split('/');
