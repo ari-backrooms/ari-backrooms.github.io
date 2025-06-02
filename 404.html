@@ -15,7 +15,7 @@
         }
         if (PageURLs.length > 3) location.href = location.origin + '/' + PageURLs[0];
         if (PageURLs[1] === 'index.html' || (PageURLs.length === 1 && PageURLs[0])) {
-          fetch(location.origin + '/404/').then((r)=>r.text()).then((r)=>{
+          fetch(location.origin + '/404/index').then((r)=>r.text()).then((r)=>{
             $('head').html(r.split('<!-- ARI: main -->')[0]);
             $('body').html(r.split('<!-- ARI: main -->')[1]);
           })
