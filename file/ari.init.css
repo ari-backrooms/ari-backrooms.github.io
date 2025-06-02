@@ -372,3 +372,7 @@ div#edit-action.closed:hover {
 div#edit-action.closed:hover::before {
     color:black!important;
 }
+/* 2025/6/2 */
+header {
+    z-index: 9;
+}
