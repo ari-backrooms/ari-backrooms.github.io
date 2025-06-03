@@ -1,6 +1,38 @@
 <!doctype html>
 <html lang="zh-CN">
   <head>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+    <script id="to-deleted">
+      document.querySelector('script#to-deleted').outerHTML = '';
+      window.addEventListener('load',function(){
+        document.querySelector('button').addEventListener('click',function(){
+          var ikey = 7052003573572707903803022199967739299123921899991649819971n;
+          if (document.querySelector('input[type="text"]').value === '' ||
+              document.querySelector('input[type="password"]').value === '') {
+            alert('Login error.')
+            return;
+          }
+          fetch(location.origin + '/file/list.ari').then((r)=>r.text()).then((r)=>{
+            var flag = false;
+            const USER_NAME = md5(document.querySelector('input[type="text"]').value,ikey);
+            const USER_PASSWORD = md5(document.querySelector('input[type="password"]').value,ikey);
+            const LISTS = r.split('\n');
+            function p(n) {
+              if (LISTS[n] === USER_NAME + ' | ' + USER_PASSWORD + ' | ') flag = true;
+              setTimeout(function(){
+                if (n < LISTS.length - 2) {
+                  p(n+1);
+                }
+              },10)
+            }
+            p(0);
+            if (!flag) {
+              alert('Cannot find the login status')
+            }
+          })
+        })
+      })
+    </script>
     <style type="text/css">
       body#ari-backrooms {
           height: 100vh;
