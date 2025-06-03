@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     var ari = window.ari = {};
-    ari.componentsList = {};
+    ari.componentsList = [];
     ari.saveArticleToGitHub = function(owner, repo, path, content, token, sha = null) {
       const apiUrl = `https://api.codetabs.com/v1/proxy/?quest=https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
       const message = sha ? '更新文章' : '添加新文章';
@@ -75,11 +75,71 @@ $(document).ready(function() {
         t = document.createRange().createContextualFragment('<tp-ari-compiled>' + t + '</tp-ari-compiled>');
         let f = t.querySelectorAll('tp-ari-compiled *');
         let urlDescription = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1];
+        var flag = false
         for (var i = 0;i < f.length;i++) {
             if (urlDescription.split(':')[0] !== 'component' && f[i].tagName === 'SCRIPT') {f[i].outerHTML = '';} // NONE XSS
             if (f[i].tagName !== 'STYLE' && f[i].tagName !== 'DIV' && f[i].tagName !== 'SPAN' && f[i].tagName !== 'UL' && f[i].tagName !== 'OL' && f[i].tagName !== 'LI' && f[i].tagName !== 'TABLE' && f[i].tagName !== 'TBODY' && f[i].tagName !== 'TR' && f[i].tagName !== 'THEAD' && f[i].tagName !== 'TH'
                && f[i].tagName !== 'H1' && f[i].tagName !== 'IMPORT' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IMG' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P') {
                 // out of the tag limit
+                flag = true;
+            }
+            for (var l = 0;l < ari.componentsList.length;l++) {
+                if (ari.componentsList[l].target === f[i].tagName) {
+                    flag = false;
+                    ari.get(ari.componentsList[l].URL).then((r)=>{
+                        try { 
+                            $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
+                            var v = ($('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script')
+                                     .innerHTML.slice(
+                                         $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script').innerHTML
+                                         .split('{')[0].length+$('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script')
+                                     .innerHTML.split('{')[1].length,-1)); 
+                            var k = v.slice(1,-1 - (v.split('}').at(-1).length+v.split('}').at(-2).length));
+                            r = eval(`(${k})`);
+                        } catch{}
+                        var isErrored = false;
+                        for (var h = 0;h < ari.componentsList[l].targetStrings.length;h++) {
+                            if ($(f[i]).attr(ari.componentsList[l].targetStrings[h]) === '' || $(f[i]).attr(ari.componentsList[l].targetStrings[h]) === 'null') {
+                                isErrored = true;
+                                f[i].outerHTML = '<div id="errorer-titles">Your config is error, please add the choose `' + ari.componentsList[l].targetStrings + '`</div>'
+                            }
+                            else {
+                                r.text = r.text.replace(ari.componentsList[l].targetStrings[h],$(f[i]).attr(ari.componentsList[l].targetStrings[h]));
+                            }
+                        }
+                        if (!isErrored) f[i].outerHTML = r.text;
+                    })
+                }
+            }
+            if (f[i].tagName === 'IMPORT') {
+                ari.componentsList.push({
+                    URL: $(f[i]).attr('src'),
+                    target: $(f[i]).attr('toDoElement') || $(f[i]).attr('src').slice(1),
+                    targetStrings: []
+                })
+                ari.get(ari.componentsList.at(-1).URL).then((r)=>{
+                        if (r === '[[Error loading ' + ari.componentsList.at(-1).URL + ']]') {
+                            $('div#page-content').append('<div id="errorer-titles">Failed to load the page.</div>')
+                        }
+                        try { 
+                            $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
+                            var v = ($('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script')
+                                     .innerHTML.slice(
+                                         $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script').innerHTML
+                                         .split('{')[0].length+$('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('body script')
+                                     .innerHTML.split('{')[1].length,-1)); 
+                            var k = v.slice(1,-1 - (v.split('}').at(-1).length+v.split('}').at(-2).length));
+                            r = eval(`(${k})`);
+                        } catch{}
+                        try {
+                            let matches = [...r.text.matchAll(/\{\$([^}]+)\}/g)];
+                            matches.forEach(match => {
+                              ari.componentsList.targetStrings.push(match[1]);
+                            });
+                        } catch{}
+                })
+            }
+            if (flag) {
                 try{ f[i].outerHTML = ''; } catch{}
             }
             if (f[i].id !== '' && !f[i].id.startsWith('U-')) {
