@@ -4,7 +4,52 @@ $(document).ready(function() {
             resolve();
         });
     });
+    let userName = null,
+        userPassword = null;
+    function getislogin() {
+        if (!localStorage.login_0x88 ||
+            !localStorage.login_0x89 ||
+            !localStorage.login_0x90 ||
+            !localStorage.login_0x91) {
+            return false;
+        }
+        var flag = true;
 
+        var moveBook = '';
+        try {
+            moveBook = atob(atob(atob(atob(atob(atob(localStorage.login_0x91)))))).split('>');
+            if (moveBook.length !== 127) {
+                flag = false;
+            }
+        } catch {
+            // have changes:
+            flag = false;
+        }
+        let newString = '';
+        for (var i = 0; i < localStorage.login_0x89.length; i++) {
+            newString += String.fromCharCode(localStorage.login_0x89[i].charCodeAt() - moveBook[i % 128]);
+        }
+
+        let newPassword = '';
+        for (var i = 0; i < localStorage.login_0x90.length; i++) {
+            newString += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
+        }
+
+
+        fetch('https://ari-backrooms.github.io/file/descListARI.html?user=' + btoa(newString) + '&password=' + btoa(newPassword) + '&RAT=' + btoa(moveBook.toString())).then((R)=>{
+            if (R.status === 404) flag = false;
+            return R.text();
+        }).then((R)=>{
+            if (R.replace('TRUE | TRUE') !== R) {
+                flag = true;
+            }
+            flag = false;
+        })
+        if (!flag) return flag;
+        userName = newString;
+        userPassword = newPassword;
+        return true;
+    }
     var ari = window.ari = {};
     ari.componentsList = [];
     ari.saveArticleToGitHub = function(owner, repo, path, content, token, sha = null) {
@@ -29,6 +74,19 @@ $(document).ready(function() {
         },
         data: JSON.stringify(data)
       });
+    }
+    if (getislogin() === true && userName && userPassword) {
+        $('#contentText').html(userName);
+        $('#headimage')[0].style = '';
+        $('#headimage').html('');
+
+        $('#headimage').css({
+            background: 'url(' + location.origin + '/::image/' + userName + '.png)'
+        });
+
+        $('#headimage').on('click',function(){
+            location.href = location.origin + '/::AccountMessage/?start';
+        })
     }
    ari.getRawArticleFromGitHub = function(owner, repo, branch, path) {
       const rawUrl = `https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
@@ -236,47 +294,5 @@ $(document).ready(function() {
                 location.reload();
             }
         })
-    }
-    function getislogin_or_admin() {
-        if (!localStorage.login_0x88 ||
-            !localStorage.login_0x89 ||
-            !localStorage.login_0x90 ||
-            !localStorage.login_0x91) {
-            return false;
-        }
-        var flag = true;
-
-        var moveBook = '';
-        try {
-            moveBook = atob(atob(atob(atob(atob(atob(localStorage.login_0x91)))))).split('>');
-            if (moveBook.length !== 127) {
-                flag = false;
-            }
-        } catch {
-            // have changes:
-            flag = false;
-        }
-        let newString = '';
-        for (var i = 0; i < localStorage.login_0x89.length; i++) {
-            newString += String.fromCharCode(localStorage.login_0x89[i].charCodeAt() - moveBook[i % 128]);
-        }
-
-        let newPassword = '';
-        for (var i = 0; i < localStorage.login_0x90.length; i++) {
-            newString += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
-        }
-
-
-        fetch('https://ari-backrooms.github.io/file/descListARI.html?user=' + btoa(newString) + '&password=' + btoa(newPassword) + '&RAT=' + btoa(moveBook.toString())).then((R)=>{
-            if (R.status === 404) flag = false;
-            return R.text();
-        }).then((R)=>{
-            if (R.replace('TRUE | TRUE') !== R) {
-                flag = true;
-            }
-            flag = false;
-        })
-        if (!flag) return flag;
-        return true;
     }
 });
