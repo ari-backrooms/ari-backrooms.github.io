@@ -134,14 +134,19 @@ $(document).ready(function() {
         let f = t.querySelectorAll('tp-ari-compiled *');
         let urlDescription = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1];
         var flag = false
-        for (var i = 0;i < f.length;i++) {
+        var i = 0;
+        function iFor() {
+            if (i >= f.length) return;
             if (urlDescription.split(':')[0] !== 'component' && f[i].tagName === 'SCRIPT') {f[i].outerHTML = '';} // NONE XSS
             if (f[i].tagName !== 'STYLE' && f[i].tagName !== 'DIV' && f[i].tagName !== 'SPAN' && f[i].tagName !== 'UL' && f[i].tagName !== 'OL' && f[i].tagName !== 'LI' && f[i].tagName !== 'TABLE' && f[i].tagName !== 'TBODY' && f[i].tagName !== 'TR' && f[i].tagName !== 'THEAD' && f[i].tagName !== 'TH'
                && f[i].tagName !== 'H1' && f[i].tagName !== 'IMPORT' && f[i].tagName !== 'H2' && f[i].tagName !== 'H3' && f[i].tagName !== 'IMG' && f[i].tagName !== 'IFRAME' && f[i].tagName !== 'H4' && f[i].tagName !== 'H5' && f[i].tagName !== 'H6' && f[i].tagName !== 'BLOCKQUOTE' && f[i].tagName !== 'A' && f[i].tagName !== 'P') {
                 // out of the tag limit
                 flag = true;
             }
-            for (var l = 0;l < ari.componentsList.length;l++) {
+            // change it
+            var l = 0;
+            function lFor() {
+                if (l >= ari.componentsList.length) return;
                 if (ari.componentsList[l].target === f[i].tagName) {
                     flag = false;
                     ari.get(ari.componentsList[l].URL).then((r)=>{
@@ -166,9 +171,14 @@ $(document).ready(function() {
                             }
                         }
                         if (!isErrored) f[i].outerHTML = r.text;
+                        setTimeout(function(){
+                            l++;
+                            lFor();
+                        },20)
                     })
                 }
-            }
+            } // end the function
+            lFor()
             if (f[i].tagName === 'IMPORT') {
                 ari.componentsList.push({
                     URL: $(f[i]).attr('src'),
@@ -195,6 +205,8 @@ $(document).ready(function() {
                               ari.componentsList.targetStrings.push(match[1]);
                             });
                         } catch{}
+                    i++; 
+                    iFor();
                 })
             }
             if (flag) {
@@ -203,7 +215,9 @@ $(document).ready(function() {
             if (f[i].id !== '' && !f[i].id.startsWith('U-')) {
                 f[i].id = 'U-' + f[i].id;
             }
+            if (f[i-1] && f[i-1].tagName !== 'IMPORT')  i++; iFor();
         }
+        iFor();
         return t.querySelector('tp-ari-compiled').innerHTML;
     }
     // THE NAV
@@ -224,7 +238,7 @@ $(document).ready(function() {
             const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
             e.returnValue = MESSAGE;
             return MESSAGE;
-        }
+        }0
         document.body.style.cursor = 'wait'
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
