@@ -88,6 +88,20 @@ $(document).ready(function() {
             location.href = location.origin + '/::AccountMessage/?start';
         })
     }
+    
+    if (new URLSearchParams(location.search).get('type') !== 'wikidot') {
+        let urlDescription = (location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]).replace('?type=wikidot','')
+        fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{
+            if (document.createRange().createContextualFragment(r).querySelector('#page-title') !== undefined) {
+                $('head').append('<style type="text/css">div#message{position:fixed;bottom:0;right:0;width:fit-content;background:#06061c;z-index:2222;color:#fff;padding:.2rem .5rem;margin:0;box-shadow:0 0 2rem #fff2}</style>')
+                $('body').append('<div id="message" style="display:none">WIKIDOT映射：<a href="?type=wikidot">此处</a></div>'); $('#message').fadeIn(1000) ;setTimeout(function(){$('#message').fadeOut(1000)},5000)
+            }
+        });
+    } else {
+        let urlDescription = (location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]).replace('?type=wikidot','')
+        fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{try{
+        let k = document.createRange().createContextualFragment(r).querySelector('#page-title').innerHTML, j = document.createRange().createContextualFragment(r).querySelector('#page-content').innerHTML;$('#page-title').html(k);$('#page-content').html(j);}catch{}})
+    }
    ari.getRawArticleFromGitHub = function(owner, repo, branch, path) {
       const rawUrl = `https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
       
