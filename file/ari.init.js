@@ -158,6 +158,7 @@ $(document).ready(function() {
 content a, content {
     color: inherit;
 }
+content {background: #92c0cf;}
 
         </style>`);
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{try{
@@ -165,6 +166,12 @@ content a, content {
         let styles = document.createRange().createContextualFragment(r).querySelectorAll('style:not(style#internal-style)');
             for (var q = 0;q < styles.length; q++) {
                 $('head').append(`<style type="text/css">${styles[q].innerHTML}</style>`);
+            }
+         let a_s = document.createRange().createContextualFragment(r).querySelectorAll('div#page-content a');
+            for (var q = 0;q < a_s.length; q++) {
+                if (a_s[q].href !== 'javascript:;') {
+                    $('div#page-content a').eq(q).attr('href',a_s[q].href + '?type=wikidot');
+                }
             }
         }catch{}})
     }
