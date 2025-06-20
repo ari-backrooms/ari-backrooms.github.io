@@ -182,8 +182,8 @@ $(document).ready(function() {
                     targetStrings: []
                 })
                 ari.get(ari.componentsList.at(-1).URL).then((r)=>{
-                        if (r === '[[Error loading ' + ari.componentsList.at(-1).URL + ']]') {
-                            $('div#page-content import[src="' + ari.componentsList.at(-1).URL + '"]').html('<div id="errorer-titles">Failed to load the page.</div>')
+                        if (r.startsWith('[[Error loading ')) {
+                            $('div#page-content import[src="' + r.split('[[Error loading ')[1].split(']]')[0] + '"]').html('<div id="errorer-titles">Failed to load the page.</div>')
                         }
                         try { 
                             $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
