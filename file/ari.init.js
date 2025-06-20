@@ -171,10 +171,6 @@ $(document).ready(function() {
                             }
                         }
                         if (!isErrored) f[i].outerHTML = r.text;
-                        setTimeout(function(){
-                            l++;
-                            lFor();
-                        },20)
                     })
                 }
             } // end the function
@@ -185,9 +181,10 @@ $(document).ready(function() {
                     target: $(f[i]).attr('toDoElement') || $(f[i]).attr('src').slice(1),
                     targetStrings: []
                 })
+                 $('div#page-content').append('<importPreview type="' + btoa(ari.componentsList.at(-1).URL) + '"></importPreview>');
                 ari.get(ari.componentsList.at(-1).URL).then((r)=>{
                         if (r === '[[Error loading ' + ari.componentsList.at(-1).URL + ']]') {
-                            $('div#page-content').append('<div id="errorer-titles">Failed to load the page.</div>')
+                            $('div#page-content importPreview[type="' + btoa(ari.componentsList.at(-1).URL) + '"]').html('<div id="errorer-titles">Failed to load the page.</div>')
                         }
                         try { 
                             $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
@@ -205,8 +202,6 @@ $(document).ready(function() {
                               ari.componentsList.targetStrings.push(match[1]);
                             });
                         } catch{}
-                    i++; 
-                    iFor();
                 })
             }
             if (flag) {
@@ -215,7 +210,7 @@ $(document).ready(function() {
             if (f[i].id !== '' && !f[i].id.startsWith('U-')) {
                 f[i].id = 'U-' + f[i].id;
             }
-            if (f[i] && f[i].tagName !== 'IMPORT')  i++; iFor();
+            i++; iFor();
         }
         iFor();
         return t.querySelector('tp-ari-compiled').innerHTML;
