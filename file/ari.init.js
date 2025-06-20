@@ -215,7 +215,7 @@ $(document).ready(function() {
             if (f[i].id !== '' && !f[i].id.startsWith('U-')) {
                 f[i].id = 'U-' + f[i].id;
             }
-            if (f[i-1] && f[i-1].tagName !== 'IMPORT')  i++; iFor();
+            if (f[i] && f[i].tagName !== 'IMPORT')  i++; iFor();
         }
         iFor();
         return t.querySelector('tp-ari-compiled').innerHTML;
@@ -238,7 +238,7 @@ $(document).ready(function() {
             const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
             e.returnValue = MESSAGE;
             return MESSAGE;
-        }0
+        }
         document.body.style.cursor = 'wait'
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
