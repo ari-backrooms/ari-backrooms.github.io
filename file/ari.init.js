@@ -99,8 +99,8 @@ $(document).ready(function() {
         });
     } else {
         let urlDescription = (location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]).replace('?type=wikidot','')
-        $('#page-title').html('调整中...');
-        $('#page-content').html('调整中...');
+        setTimeout(function(){$('#page-title').html('调整中...');
+        $('#page-content').html('调整中...');},50)
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{try{
         let k = document.createRange().createContextualFragment(r).querySelector('#page-title').innerHTML, j = document.createRange().createContextualFragment(r).querySelector('#page-content').innerHTML;$('#page-title').html(k);$('#page-content').html(j);}catch{}})
     }
