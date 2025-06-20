@@ -181,10 +181,9 @@ $(document).ready(function() {
                     target: $(f[i]).attr('toDoElement') || $(f[i]).attr('src').slice(1),
                     targetStrings: []
                 })
-                 $('div#page-content').append('<importPreview type="' + btoa(ari.componentsList.at(-1).URL) + '"></importPreview>');
                 ari.get(ari.componentsList.at(-1).URL).then((r)=>{
                         if (r === '[[Error loading ' + ari.componentsList.at(-1).URL + ']]') {
-                            $('div#page-content importPreview[type="' + btoa(ari.componentsList.at(-1).URL) + '"]').html('<div id="errorer-titles">Failed to load the page.</div>')
+                            $('div#page-content import[src="' + ari.componentsList.at(-1).URL + '"]').html('<div id="errorer-titles">Failed to load the page.</div>')
                         }
                         try { 
                             $('iframe[hidden][id="gets-somt-iframe"]')[0].contentWindow.document.querySelector('html').innerHTML = r;
