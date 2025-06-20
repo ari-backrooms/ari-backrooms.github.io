@@ -124,8 +124,8 @@ $(document).ready(function() {
         document.title = 'ARI BACKROOMS WIKI ' + pageName;
         
         Promiser.then(async function() {
-            $('div#page-title').html(pageData.title);
-            $('div#page-content').html(ari.compiled(pageData.text));
+            if (new URLSearchParams(location.search).get('type') !== 'wikidot'){$('div#page-title').html(pageData.title);
+            $('div#page-content').html(ari.compiled(pageData.text));}
         }).then(function() {
             $('div#page-title').attr('data-type', 'ok');
             $('div#page-content').attr('data-type', 'ok');
