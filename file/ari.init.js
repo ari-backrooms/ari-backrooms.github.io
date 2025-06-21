@@ -159,6 +159,56 @@ content a, content {
     color: inherit;
 }
 content {background: #92c0cf;}
+.scp-image-block {
+        --box-shadow: rgba(var(--swatch-menubg-black-color), 0.1);
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        box-shadow: 0.125rem 0.125rem 0.25rem var(--box-shadow);
+        border: 0.0625rem outset rgba(var(--swatch-primary-darkest), 0.25);
+        width: 18.75rem;
+    }
+    .scp-image-block.block-right {
+        float: right;
+        clear: right;
+        margin: 0 0 1em 2em;
+    }
+    .scp-image-block.block-left {
+        float: left;
+        clear: left;
+        margin: 0 2em 1em 0;
+    }
+    .scp-image-block.block-center {
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .scp-image-block img {
+        border: 0;
+        min-width: 100%;
+    }
+    .scp-image-block img[style*="width:"] {
+        width: 100% !important;
+    }
+    .scp-image-block .scp-image-caption {
+        --wght: 700;
+        box-sizing: border-box;
+        border-top: 0.0625rem outset rgba(var(--swatch-primary-darkest), 0.25);
+        background-color: rgb(var(--swatch-secondary-color));
+        padding: 0.25em 0.5em;
+        font-weight: 700;
+        font-size: 80%;
+        line-height: 1.25;
+        letter-spacing: 0.016em;
+        text-align: center;
+        background: white;
+    }
+    .scp-image-block .scp-image-caption > p {
+        margin: 0;
+        padding: 0;
+    }
+    .scp-image-caption {
+        min-width: 100%;
+    }
 
         </style>`);
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{try{
