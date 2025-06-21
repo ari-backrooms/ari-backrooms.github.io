@@ -209,7 +209,13 @@ content {background: #92c0cf;}
     .scp-image-caption {
         min-width: 100%;
     }
-
+span.printuser.avatarhover a img {
+    aspect-ratio: 1;
+    height: 1rem;
+    margin: .2rem;
+    position: relative;
+    top: 0.5rem;
+}
         </style>`);
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://ari-01.wikidot.com/' + urlDescription).then((r)=>r.text()).then((r)=>{try{
         let k = document.createRange().createContextualFragment(r).querySelector('#page-title').innerHTML, j = document.createRange().createContextualFragment(r).querySelector('#page-content').innerHTML;$('#page-title').html(k);$('#page-content').html(j);
