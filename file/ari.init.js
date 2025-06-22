@@ -433,14 +433,14 @@ span.printuser.avatarhover a img {
             window.open(location.origin + '/gets.noneuser/register');
         })
         var t = setInterval(function(){
-            if (localStorage.login_0x88) {
+            if (getislogin()) {
                 clearInterval(t)
                 location.reload();
             }
         })
     } else {
          var t = setInterval(function(){
-            if (!localStorage.login_0x88) {
+            if (!getislogin()) {
                 clearInterval(t)
                 location.reload();
             }
