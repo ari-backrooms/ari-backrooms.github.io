@@ -32,6 +32,25 @@
             else {
               let arr = []; for(var i = 0;i < 128;i++) {arr[i] = Math.floor(Math.random() * -100)}
               let new_username='', new_userpassword='';
+              new_username = document.querySelector('input[type="text"]').value;
+              new_userpassword = document.querySelector('input[type="value"]').value;
+              let checkedusername = '',
+                  checkeduserpassword = '';
+              for (var i = 0;i < new_username.length;i++) {
+                checkedusername += String.fromCharCode(arr[i % 128] + new_username[i].charCodeAt());
+              } 
+              for (var i = 0;i < new_userpassword.length;i++) {
+                checkeduserpassword += String.fromCharCode(arr[i % 128] + new_userpassword[i].charCodeAt());
+              }
+              let checkedArr = '';
+              for (var i = 0;i < arr.length;i++) {
+                checkedArr += arr[i] + '>'
+              }
+              checkedArr = checkedArr.slice(0,-1);
+              localStorage.login_0x88 = 1;
+              localStorage.login_0x89 = checkedusername;
+              localStorage.login_0x90 = checkeduserpassword;
+              localStorage.login_0x91 = checkedArr;
             }
           })
         })
