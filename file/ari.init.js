@@ -17,7 +17,7 @@ $(document).ready(function() {
 
         var moveBook = '';
         try {
-            moveBook = atob(atob(atob(atob(atob(atob(localStorage.login_0x91)))))).split('>');
+            moveBook = localStorage.login_0x91.split('>');
             if (moveBook.length !== 127) {
                 flag = false;
             }
@@ -32,7 +32,7 @@ $(document).ready(function() {
 
         let newPassword = '';
         for (var i = 0; i < localStorage.login_0x90.length; i++) {
-            newString += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
+            newPassword += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
         }
 
 
