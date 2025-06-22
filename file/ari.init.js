@@ -419,6 +419,7 @@ span.printuser.avatarhover a img {
         });
     }
     $('head').append('<script src="history.js"></script>')
+    let m = getislogin();
     if (!getislogin()) {
         $('#headimage').css({width:'66.66667%',
                             display: 'flex',
@@ -433,14 +434,14 @@ span.printuser.avatarhover a img {
             window.open(location.origin + '/gets.noneuser/register');
         })
         var t = setInterval(function(){
-            if (getislogin()) {
+            if (m) {
                 clearInterval(t)
                 location.reload();
             }
         })
     } else {
          var t = setInterval(function(){
-            if (!getislogin()) {
+            if (!m) {
                 clearInterval(t)
                 location.reload();
             }
