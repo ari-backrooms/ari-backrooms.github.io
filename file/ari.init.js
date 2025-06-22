@@ -419,7 +419,7 @@ span.printuser.avatarhover a img {
         });
     }
     $('head').append('<script src="history.js"></script>')
-    if (!localStorage.login_0x88) {
+    if (!getislogin()) {
         $('#headimage').css({width:'66.66667%',
                             display: 'flex',
                             justifyContent: 'center',
