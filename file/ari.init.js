@@ -278,7 +278,7 @@ $(document).ready(function() {
   } else {
     $.md5 = md5
   }
-})(this)
+})(window)
     // THE CONTENT
     var Promiser = new Promise((resolve, reject) => {
         setTimeout(() => {
