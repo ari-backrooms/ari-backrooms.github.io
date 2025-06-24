@@ -391,3 +391,31 @@ div#errorer-titles {
     font-weight: 100;
     box-shadow: 0 0 .5rem indianred;
 }
+/* 2025/6/24 */
+ui-alert {
+    display: block;
+    position: fixed;
+    top: 45%;
+    left: 20%;
+    width: 60%;
+    height: 4%;
+    background: white;
+    padding: .2rem .5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 100vw 100vw 200vw 200vw #00000033;
+    z-index: 22222;
+}
+
+ui-cancel {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: indianred;
+    font-size: 0.75rem;
+    color: white;
+    padding: .2rem;
+}
