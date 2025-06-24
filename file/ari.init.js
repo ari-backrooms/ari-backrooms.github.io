@@ -552,7 +552,8 @@ span.printuser.avatarhover a img {
             return `[[Error loading ${pageName}]]`;
         }
     };
-    fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/list.ari').then((r)=>r.text()).then((r)=>{
+    if (getislogin()) {
+        fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/list.ari').then((r)=>r.text()).then((r)=>{
          var flag = false;
             const USER_NAME = window.md5(userName,7052003573572707903803022199967739299123921899991649819971n);
             const USER_PASSWORD = window.md5(userPassword,7052003573572707903803022199967739299123921899991649819971n)
@@ -571,7 +572,8 @@ span.printuser.avatarhover a img {
                 delete localStorage.login_0x91;
                 history.go();
             }
-    })
+        })
+    }
     ari.compiled = (t) => {
         t = document.createRange().createContextualFragment('<tp-ari-compiled>' + t + '</tp-ari-compiled>');
         let f = t.querySelectorAll('tp-ari-compiled *');
@@ -673,6 +675,7 @@ span.printuser.avatarhover a img {
     ari.user.edit = () => {
         if (!islogin() || !userName || !userPassword) {
             $('body').append('<ui-alert>抱歉，你尚未登录，请登录。<ui-cancel onclick="this.parentNode.outerHTML=\'\'">关闭</ui-alert>')
+            return;
         }
 
         window.onbeforeunload = (e) => {
