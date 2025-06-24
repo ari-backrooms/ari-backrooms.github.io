@@ -35,16 +35,16 @@ $(document).ready(function() {
             newPassword += String.fromCharCode(localStorage.login_0x90[i].charCodeAt() - moveBook[i % 128]);
         }
 
-
-        fetch('https://ari-backrooms.github.io/file/descListARI.html?user=' + btoa(newString) + '&password=' + btoa(newPassword) + '&RAT=' + btoa(moveBook.toString())).then((R)=>{
-            if (R.status === 404) flag = false;
-            return R.text();
-        }).then((R)=>{
-            if (R.replace('TRUE | TRUE') !== R) {
-                flag = true;
-            }
-            flag = false;
-        })
+        if (newString !== '' & newPassword !== '') flag = true;
+        // fetch('https://ari-backrooms.github.io/file/descListARI.html?user=' + btoa(newString) + '&password=' + btoa(newPassword) + '&RAT=' + btoa(moveBook.toString())).then((R)=>{
+        //     if (R.status === 404) flag = false;
+        //     return R.text();
+        // }).then((R)=>{
+        //     if (R.replace('TRUE | TRUE') !== R) {
+        //         flag = true;
+        //     }
+        //     flag = false;
+        // })
         if (!flag) return flag;
         userName = newString;
         userPassword = newPassword;
