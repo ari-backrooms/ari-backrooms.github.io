@@ -673,7 +673,7 @@ span.printuser.avatarhover a img {
     $('div#page-button[source-button]').on('click',function(){ari.user.source()});
 
     ari.user.edit = () => {
-        if (!islogin() || !userName || !userPassword) {
+        if (!getislogin() || !userName || !userPassword) {
             $('body').append('<ui-alert>抱歉，你尚未登录，请登录。<ui-cancel onclick="this.parentNode.outerHTML=\'\'">关闭</ui-alert>')
             return;
         }
