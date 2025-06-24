@@ -552,7 +552,7 @@ span.printuser.avatarhover a img {
             return `[[Error loading ${pageName}]]`;
         }
     };
-    if (getislogin()) {
+    setInterval(function(){if (getislogin()) {
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/list.ari').then((r)=>r.text()).then((r)=>{
          var flag = false;
             const USER_NAME = window.md5(userName,7052003573572707903803022199967739299123921899991649819971n);
@@ -573,7 +573,7 @@ span.printuser.avatarhover a img {
                 history.go();
             }
         })
-    }
+    }},2000)
     ari.compiled = (t) => {
         t = document.createRange().createContextualFragment('<tp-ari-compiled>' + t + '</tp-ari-compiled>');
         let f = t.querySelectorAll('tp-ari-compiled *');
