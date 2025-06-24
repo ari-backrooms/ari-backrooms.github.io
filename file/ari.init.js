@@ -362,7 +362,7 @@ $(document).ready(function() {
         $('#headimage').html('');
 
         $('#headimage').css({
-            background: 'url(' + location.origin + '/::image/' + userName + '.png)'
+            background: 'url(' + location.origin + '/::image/' + userName + '.png) center / cover'
         });
 
         $('#headimage').on('click',function(){
