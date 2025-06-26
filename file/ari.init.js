@@ -620,11 +620,6 @@ span.printuser.avatarhover a img {
                 }
             } // end the function
             lFor()
-            if ($(f[i]).attr('click-link-href')) {
-                f[i].onclick = function(){
-                    window.open(location.origin + $(this).attr('click-link-href'))
-                };
-            }
             if (f[i].tagName === 'IMPORT') {
                 ari.componentsList.push({
                     URL: $(f[i]).attr('src'),
@@ -691,7 +686,7 @@ span.printuser.avatarhover a img {
         document.body.style.cursor = 'wait'
         let PageURL = location.href.slice(location.origin.length+1,-1) + location.href[location.href.length - 1]
         if (PageURL.at(-1) === '/') PageURL += 'index.html';
-        $('body').append('<div id="edit-action" style="display:none"><input type="text" id="edit-title"><textarea id="edit-content"></textarea><div id="tools"><button id="cancel">取消</button><button id="preview">预览</button><button id="save">保存</button></div></div>')
+        $('body').append('<div id="edit-action" style="display:none"><div id="editlist"></div><input type="text" id="edit-title"><textarea id="edit-content"></textarea><div id="tools"><button id="cancel">取消</button><button id="preview">预览</button><button id="save">保存</button></div></div>')
         ari.getRawArticleFromGitHub('ari-backrooms','ari-backrooms.github.io','main',PageURL).then(function(r){
             document.body.style.cursor = ''
             try {r = document.createRange().createContextualFragment(r);}catch{}
