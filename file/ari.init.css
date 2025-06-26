@@ -419,3 +419,18 @@ ui-cancel {
     color: white;
     padding: .2rem;
 }
+div#editlist {
+    margin: 1.2rem;
+    box-shadow: 0 0 2rem #0002;
+    height: 4rem;
+}
+
+div#editlist::before {
+    content: '编辑辅助栏';
+    color: white;
+    font-size: .87rem;
+    font-weight: 100;
+    display: block;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
