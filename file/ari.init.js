@@ -621,9 +621,9 @@ span.printuser.avatarhover a img {
             } // end the function
             lFor()
             if ($(f[i]).attr('click-link-href')) {
-                $(f[i]).on('click',function(){
+                f[i].onclick = function(){
                     window.open(location.origin + $(this).attr('click-link-href'))
-                });
+                };
             }
             if (f[i].tagName === 'IMPORT') {
                 ari.componentsList.push({
