@@ -768,10 +768,10 @@ span.printuser.avatarhover a img {
                     setTimeout(function(){
                         fetch('https://ari-backrooms.github.io/file/ari.init.js');
                         fetch('https://ari-backrooms.github.io/file/ari.init.css');
-                        $('body').append(`<ui-alert>检测到更新记录：${r.split(' | ')[1]}、更新位置于：${r.split(' | ')[2].replace(/\n/g,'')}<ui-cancel onclick=\`
+                        if (!$('ui-alert')[0]) {$('body').append(`<ui-alert>检测到更新记录：${r.split(' | ')[1]}、更新位置于：${r.split(' | ')[2].replace(/\n/g,'')}<ui-cancel onclick=\`
                             window.open('https://ari-backrooms.github.io/');
                             window.close();
-                        \`>更新</ui-alert>`)
+                        \`>更新</ui-alert>`)}
                     },10000)
                 }
             });
