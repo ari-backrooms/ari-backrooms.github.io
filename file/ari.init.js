@@ -759,7 +759,8 @@ span.printuser.avatarhover a img {
             }
         })
     }
-    var $type,$dateTimer,$createContentURL;
+});
+var $type,$dateTimer,$createContentURL;
     fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/ari.updates.txt').then((r)=>{return r.text()}).then((r)=>{
         $type=r.split(' | ')[0];$dateTimer=r.split(' | ')[1];$createContentURL=r.split(' | ')[2].replace(/\n/g,'').split(',');
         setInterval(function(){
@@ -777,4 +778,3 @@ span.printuser.avatarhover a img {
             });
         },10000)
     });
-});
