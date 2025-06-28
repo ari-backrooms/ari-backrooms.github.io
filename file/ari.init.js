@@ -366,7 +366,7 @@ $(document).ready(function() {
         });
 
         $('#headimage').on('click',function(){
-            location.href = location.origin + '/::AccountMessage/?start';
+            location.href = location.origin + '/::AccountMessage/?page=start';
         })
     }
     
