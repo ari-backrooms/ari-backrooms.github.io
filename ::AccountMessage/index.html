@@ -1,5 +1,40 @@
 <!doctype html>
 <html>
   <head></head>
-  <body id="Ari-Account"></body>
+  <body id="Ari-Account">
+    <div id="animations">
+      <span id="animation-frame"><svg height="32px" width="32px" viewBox="0 0 16 16" fill="none" aria-hidden="true" aria-label="Loading"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle><path d="M15 8a7.002 7.002 0 00-7-7" stroke="white" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path></svg></span></div>
+      <style type="text/css">
+        span#animation-frame svg {
+          animation:ANIMATIONFRAME 2.5s infinite;
+        }
+        @keyframes ANIMATIONFRAME {
+          0% {transform:rotate(0);}
+          100% {transform:rotate(360deg);}
+        }
+        span#animation-frame {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 97vh;
+          transform: scale(5);
+      }
+      
+      div#animations {
+          overflow: hidden;
+      }
+      
+      * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+      
+      body#Ari-Account {
+          background: black;
+      }
+      </style>
+    </div>
+    <div id="relcontent"></div>
+  </body>
 </html>
