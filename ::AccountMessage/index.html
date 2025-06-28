@@ -33,6 +33,18 @@
       body#Ari-Account {
           background: black;
       }
+
+      span#animation-frame::before {
+          content: 'LOADING';
+          color: white;
+          position: absolute;
+          transform: scale(0.175);
+          font-weight: 100;
+      }
+      
+      span#animation-frame svg circle {
+          stroke: #abbeff42;
+      }
       </style>
     </div>
     <div id="relcontent"></div>
