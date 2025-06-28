@@ -760,21 +760,21 @@ span.printuser.avatarhover a img {
         })
     }
 });
-var $type,$dateTimer,$createContentURL;
-    fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/ari.updates.txt').then((r)=>{return r.text()}).then((r)=>{
-        $type=r.split(' | ')[0];$dateTimer=r.split(' | ')[1];$createContentURL=r.split(' | ')[2].replace(/\n/g,'').split(',');
-        setInterval(function(){
-            fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/ari.updates.txt').then((r)=>{return r.text()}).then((r)=>{
-                if ($dateTimer !== r.split(' | ')[1]) {
-                    setTimeout(function(){
-                        fetch('https://ari-backrooms.github.io/file/ari.init.js');
-                        fetch('https://ari-backrooms.github.io/file/ari.init.css');
-                        if (!$('ui-alert')[0]) {$('body').append(`<ui-alert>检测到更新记录：${r.split(' | ')[1]}、更新位置于：${r.split(' | ')[2].replace(/\n/g,'')}<ui-cancel onclick=\`
-                            window.open('https://ari-backrooms.github.io/');
-                            window.close();
-                        \`>更新</ui-alert>`)}
-                    },10000)
-                }
-            });
-        },10000)
-    });
+// var $type,$dateTimer,$createContentURL;
+//     fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/ari.updates.txt').then((r)=>{return r.text()}).then((r)=>{
+//         $type=r.split(' | ')[0];$dateTimer=r.split(' | ')[1];$createContentURL=r.split(' | ')[2].replace(/\n/g,'').split(',');
+//         setInterval(function(){
+//             fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/ari.updates.txt').then((r)=>{return r.text()}).then((r)=>{
+//                 if ($dateTimer !== r.split(' | ')[1]) {
+//                     setTimeout(function(){
+//                         fetch('https://ari-backrooms.github.io/file/ari.init.js');
+//                         fetch('https://ari-backrooms.github.io/file/ari.init.css');
+//                         if (!$('ui-alert')[0]) {$('body').append(`<ui-alert>检测到更新记录：${r.split(' | ')[1]}、更新位置于：${r.split(' | ')[2].replace(/\n/g,'')}<ui-cancel onclick=\`
+//                             window.open('https://ari-backrooms.github.io/');
+//                             window.close();
+//                         \`>更新</ui-alert>`)}
+//                     },10000)
+//                 }
+//             });
+//         },10000)
+//     });
