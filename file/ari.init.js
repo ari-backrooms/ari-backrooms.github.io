@@ -678,6 +678,11 @@ span.printuser.avatarhover a img {
             return;
         }
 
+        if (new Date().getMonth() === 4 && ((new Date().getDate() === 28 && new Date().getHours() >= 10) || (new Date().getDate() === 29 && new Date().getHours() < 9))) {
+            $('body').append('<ui-alert>我方在5月28日晚10时至5月29日早9时禁止任何人在此站编辑。详见<a href="https://ari-01.wikidot.com/history:destorys-and-readdal">2025年破坏事件</a><ui-cancel onclick="this.parentNode.outerHTML=\'\'">关闭</ui-alert>')
+            return;
+        }
+
         window.onbeforeunload = (e) => {
             const MESSAGE = '我们不希望你的文章在编辑页面时意外脱离导致消失';
             e.returnValue = MESSAGE;
