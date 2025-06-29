@@ -42,6 +42,9 @@ $(function(){
       $('div#relcontent').append('<h1>对不起，你尚未登陆</h1>');
       $('div#relcontent').append('<span>你可以选择 <button onclick="window.open(location.origin+\'/gets.noneuser/login/\')">登录</button> 和 <button onclick="window.open(location.origin+\'/gets.noneuser/register/\')">注册</button></span>');
     }
+    else {
+      
+    }
   })
   promise.then(()=>{
     $('div#animations').fadeOut(500);
