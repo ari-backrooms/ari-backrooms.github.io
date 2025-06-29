@@ -16,6 +16,7 @@ svg.none-login-style {
     background: #0005;
     display: block;
     z-index: 22;
+    backdrop-filter: blur(2px) brightness(1.5);
 }
 
 .none-login-style~span {
