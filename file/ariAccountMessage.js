@@ -43,6 +43,7 @@ $(function(){
       $('div#relcontent').append('<span>你可以选择 <button onclick="window.open(location.origin+\'/gets.noneuser/login/\')">登录</button> 和 <button onclick="window.open(location.origin+\'/gets.noneuser/register/\')">注册</button></span>');
     }
     else {
+      $('div#relcontent').html('')
       $('div#relcontent').append('<div id="sidebar"></div>');
       if (location.search === '' || location.search === '?') {
         location.search = '?page=start';
@@ -54,8 +55,15 @@ $(function(){
         if (type === contentURLs[i][0]) flag = true;
         $('div#sidebar').append('<a id="kside" '+ (type === contentURLs[i][0]?'style="border-bottom:1px solid red"':'') + ' href="?page=' +  contentURLs[i][0] + '">' + (navigator.language.replace('-')[0]!=='zh'?contentURLs[i][1]:contentURLs[i][0]) + '</a>')
       }
+      $('div#relcontent').append('<div id="content"></div>')
       if (!flag) {location.search = '?page=start';}
-      
+      contentURLs[0][2] = function(){
+        $('#content').html('');
+        $('#content').append('<p></p>');
+      }
+      for (var i = 0;i < contentURLs.length;i++) {
+        if (type === contentURLs[i][0]) contentURLs[i][2]();
+      }
     }
   })
   promise.then(()=>{
