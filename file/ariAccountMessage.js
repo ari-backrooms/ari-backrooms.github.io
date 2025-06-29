@@ -43,6 +43,18 @@ $(function(){
       $('div#relcontent').append('<span>你可以选择 <button onclick="window.open(location.origin+\'/gets.noneuser/login/\')">登录</button> 和 <button onclick="window.open(location.origin+\'/gets.noneuser/register/\')">注册</button></span>');
     }
     else {
+      $('div#relcontent').append('<div id="sidebar"></div>');
+      if (location.search === '' || location.search === '?') {
+        location.search = '?page=start';
+      }
+      let type = new URL(location.href).searchParams.get('page');
+      let contentURLs = [['start','开始'],['messages','消息'],['guide','教程'],['userInfos','用户信息'],['yourContents','创建文章']]
+      let flag = false;
+      for (var i = 0;i < contentURLs.length;i++) {
+        if (type === contentURLs[i][0]) flag = true;
+        $('div#sidebar').append('<a id="kside" href="?page=' + contentURLs[i][0] + '">' + (navigator.language.replace('-')[0]!=='zh'?contentURLs[i][1]:contentURLs[i][0]) + '</a>')
+      }
+      if (!flag) {location.search = '?page=start';}
       
     }
   })
