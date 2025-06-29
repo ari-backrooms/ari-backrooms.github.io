@@ -60,6 +60,6 @@ $(function(){
   })
   promise.then(()=>{
     $('div#animations').fadeOut(500);
-    $('div#relcontent').fadeIn(500);
+    setTimeout(function(){$('div#relcontent').fadeIn(500);},500)
   })
 });
