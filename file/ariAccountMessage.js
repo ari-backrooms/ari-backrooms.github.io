@@ -52,7 +52,7 @@ $(function(){
       let flag = false;
       for (var i = 0;i < contentURLs.length;i++) {
         if (type === contentURLs[i][0]) flag = true;
-        $('div#sidebar').append('<a id="kside" href="?page=' + contentURLs[i][0] + '">' + (navigator.language.replace('-')[0]!=='zh'?contentURLs[i][1]:contentURLs[i][0]) + '</a>')
+        $('div#sidebar').append('<a id="kside" '+ (type === contentURLs[i][0]?'style="border-bottom:1px solid red"':'') + ' href="?page=' +  contentURLs[i][0] + '">' + (navigator.language.replace('-')[0]!=='zh'?contentURLs[i][1]:contentURLs[i][0]) + '</a>')
       }
       if (!flag) {location.search = '?page=start';}
       
