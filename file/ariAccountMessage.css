@@ -1,0 +1,35 @@
+div#relcontent:has(.none-login-style) {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+svg.none-login-style {
+    transform: scale(5);
+}
+
+.none-login-style~h1 {
+    color: white;
+    background: #0005;
+    display: block;
+    z-index: 22;
+}
+
+.none-login-style~span {
+    position: relative;
+    top: 2rem;
+    color: white;
+    font-weight: 100;
+}
+
+.none-login-style~span button {
+    background: white;
+    border: navajowhite;
+    padding: .1rem .3rem;
+    font-size: .95rem;
+    border: 3px solid black;
+    box-shadow: 0 0 1rem #fff2;
+}
