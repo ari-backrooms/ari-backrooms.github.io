@@ -59,7 +59,7 @@ $(function(){
       if (!flag) {location.search = '?page=start';}
       contentURLs[0][2] = function(){
         $('#content').html('');
-        $('#content').append('<h1>' + userName + '</h1><img id="accountStyle" src="' + location.origin + '/::image/' + userName + '"/>');
+        $('#content').append('<h1>' + userName + '</h1><img id="accountStyle" src="' + location.origin + '/::image/' + userName + '.png"/>');
       }
       for (var i = 0;i < contentURLs.length;i++) {
         if (type === contentURLs[i][0]) contentURLs[i][2]();
