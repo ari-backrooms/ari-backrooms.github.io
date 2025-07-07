@@ -129,3 +129,59 @@ h1:has(+img#accountStyle):after {
 img#accountStyle {
     margin-bottom: 2rem;
 }
+ari-table {
+    display: block;
+    background: #333;
+    color: white;
+    margin: 2rem 5rem;
+}
+
+ari-head,ari-body {
+    display: flex;
+    justify-content: space-around;
+    min-height: 2rem;
+}
+
+ari-head ari-t {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #555;
+    width: 100%;
+    border: 1px solid;
+}
+
+ari-body ari-t {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid;
+}
+
+button#sendMessage,button#replyMessage {
+    width: calc(50% - 2.4rem);
+    position: relative;
+    top: 2rem;
+    margin: 1.2rem;
+    padding: 1.2rem .5rem;
+    background: #222;
+    color: white;
+    border: none;
+    box-shadow: 0 0 2rem #222;
+    border: 1px solid #fff2;
+    transition: .15s;
+}
+
+:is(button#sendMessage, button#replyMessage):hover {
+    background: #444;
+}
+
+button#sendMessage::before {
+    content: '私信互动消息↓';
+    position: absolute;
+    top: -2.5rem;
+    left: 0%;
+    font-size: 1.25rem;
+    font-weight: 100;
+}
