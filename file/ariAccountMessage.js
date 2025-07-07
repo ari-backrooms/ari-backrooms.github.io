@@ -48,7 +48,7 @@ $(function(){
       if (location.search === '' || location.search === '?') {
         location.search = '?page=start';
       }
-      let type = new URL(location.href).searchParams.get('page');
+      let type = new URL(location.href).searchParams.get('page');di
       let contentURLs = [['start','开始'],['messages','消息'],['guide','教程'],['userInfos','用户信息'],['yourContents','创建文章']]
       let flag = false;
       for (var i = 0;i < contentURLs.length;i++) {
@@ -60,6 +60,8 @@ $(function(){
       contentURLs[0][2] = function(){
         $('#content').html('');
         $('#content').append('<h1>' + userName + '</h1><img id="accountStyle" src="' + location.origin + '/::image/' + userName + '.png"/>');
+        $('#content').append('<ari-table><ari-head><ari-t>在ari的位置</ari-t><ari-t>被发送的信息</ari-t><ari-t>文章数</ari-t></ari-head><ari-body><ari-t edits="A 1"></ari-t><ari-t edits="B 1"></ari-t><ari-t edits="C 1"></ari-t></ari-body></ari-table>')
+        $('#content').append('<hr /><button id="sendMessage">发送指定消息</button><button id="replyMessage">回复指定消息</button>')
       }
       for (var i = 0;i < contentURLs.length;i++) {
         if (type === contentURLs[i][0]) contentURLs[i][2]();
