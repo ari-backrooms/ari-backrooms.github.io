@@ -48,7 +48,7 @@ $(function(){
       if (location.search === '' || location.search === '?') {
         location.search = '?page=start';
       }
-      let type = new URL(location.href).searchParams.get('page');di
+      let type = new URL(location.href).searchParams.get('page');
       let contentURLs = [['start','开始'],['messages','消息'],['guide','教程'],['userInfos','用户信息'],['yourContents','创建文章']]
       let flag = false;
       for (var i = 0;i < contentURLs.length;i++) {
