@@ -62,3 +62,70 @@ div#relcontent:not(:has(.none-login-style))    div#sidebar a#kside {
 div#relcontent:not(:has(.none-login-style))    div#sidebar a#kside:hover {
     background: #fff2;
 }
+h1 {
+    color: white;
+}
+
+img#accountStyle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    top: -3rem;
+    left: calc(50% - 2rem);
+    width: 4rem;
+}
+
+h1:has(+img#accountStyle) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+    z-index: 114514;
+    position: relative;
+    background: #0002;
+    backdrop-filter: blur(10px);
+    transition: top .5s, background .5s,opacity .5s;
+    top: 0;
+    opacity: .75;
+}
+
+div#content {
+    width: 100%;
+}
+
+h1:has(+img#accountStyle):hover, h1:has(+img#accountStyle:hover) {
+    top: 4rem;
+    background: black;
+    opacity: 1;
+}
+
+h1:has(+img#accountStyle)::before {
+    content: '欢迎您，';
+}
+
+:lang(en) h1:has(+img#accountStyle)::before {
+    content: 'Welcome to ari-backrooms，';
+}
+
+img#accountStyle {
+    filter: blur(10px);
+    transition: all .5s;
+}
+
+img#accountStyle:hover,h1:has(+img#accountStyle):hover+img#accountStyle {
+    filter: none;
+}
+
+h1:has(+img#accountStyle):after {
+    content: '';
+    background: white;
+    height: 1px;
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+}
+
+img#accountStyle {
+    margin-bottom: 2rem;
+}
