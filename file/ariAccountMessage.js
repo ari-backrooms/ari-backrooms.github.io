@@ -79,6 +79,19 @@ $(function(){
             if (r.BanList[i] === userName) $('ari-t[edits="A 1"]').html('被封禁')
           }
         })
+        $('button#MButton2').on('click',function(){
+          if ($('div#ui-theme-choose').length > 0) return;
+          let texty = '<p>你所拥有的版式（<a href="../themes-list/">版式名单</a>）</p>';
+          let location_lists = eval(`[${localStorage.locationListTheme ?? []}]`);
+          console.warn('WARN | PLEASE CHECK THE LIST LOCALSTORAGE.LOCATIONLISTTHEME')
+          if (typeof location_lists !== typeof []) throw new Error('THE LOCATIONLISTTHEME IS NOT LAWY')
+          for (var i = 0;i < location_lists.length;i++) {
+            texty += `<div id="themeList" data="${i}" onclick="ariTheme(${location_list[i]})" title="应用"><a href="${location_list[i].url}">${location_lists[i].name}</a></div>`
+          }
+          $('#relcontent').append('<div id="ui-theme-choose" style="display:none">' + texty + '<p>你可以自定义你的版式.</p><el-close>x</el-close></div>')
+          $('el-close').on('click',function(){$(this).parent().remove()})
+          $('#ui-theme-choose').fadeIn(800)
+        })
       }
       for (var i = 0;i < contentURLs.length;i++) {
         if (type === contentURLs[i][0]) contentURLs[i][2]();
