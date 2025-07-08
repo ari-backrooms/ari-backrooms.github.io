@@ -185,3 +185,51 @@ button#MButton1::before {
     font-size: 1.25rem;
     font-weight: 100;
 }
+
+div#ui-theme-choose {
+    position: fixed;
+    display: flex;
+    margin: calc(50vw - 250px) calc(50vw - 150px);
+    width: 300px;
+    aspect-ratio: 2;
+    background: white;
+    flex-direction: column;
+    box-shadow: 100vmax 100vmax 0 10000vw #0008;
+    z-index: 1919810;
+    overflow: auto;
+}
+
+body:has(div#ui-theme-choose) {
+    overflow: hidden;
+}
+
+el-close {
+    position: absolute;
+    right: 0.25rem;
+    top: -.25rem;
+    color: grey;
+    transform: scaleX(1.25);
+    font-weight: 100;
+    transition: all .15s;
+}
+
+el-close:hover {
+    color: red;
+}
+
+div#ui-theme-choose p {
+    margin: .5rem auto;
+}
+
+div#ui-theme-choose p a {
+    color: red;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+#themeList {
+    background: #eee;
+    height: 32px;
+    border-bottom: 1px solid #0002;
+    margin: 1rem 0;
+}
