@@ -60,8 +60,8 @@ $(function(){
       contentURLs[0][2] = function(){
         $('#content').html('');
         $('#content').append('<h1>' + userName + '</h1><img id="accountStyle" src="' + location.origin + '/::image/' + userName + '.png"/>');
-        $('#content').append('<ari-table><ari-head><ari-t>在ari的位置</ari-t><ari-t>被发送的信息</ari-t><ari-t>文章数</ari-t></ari-head><ari-body><ari-t edits="A 1"></ari-t><ari-t edits="B 1"></ari-t><ari-t edits="C 1"></ari-t></ari-body></ari-table>')
-        $('#content').append('<hr /><button id="sendMessage">发送指定消息</button><button id="replyMessage">回复指定消息</button>')
+        $('#content').append('<ari-table><ari-head><ari-t>在ari的位置</ari-t><ari-t>组件数</ari-t><ari-t>文章数</ari-t></ari-head><ari-body><ari-t edits="A 1"></ari-t><ari-t edits="B 1"></ari-t><ari-t edits="C 1"></ari-t></ari-body></ari-table>')
+        $('#content').append('<hr /><button id="MButton1">申请管理</button><button id="MButton2">改版式</button>')
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/members.json').then((r)=> r.json()).then((r)=>{
           for (var i = 0;i < r.MasterAdmins.length;i++) {
             if (r.MasterAdmins[i] === userName) $('ari-t[edits="A 1"]').html('主要管理员')
