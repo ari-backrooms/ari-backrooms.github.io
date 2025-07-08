@@ -159,7 +159,7 @@ ari-body ari-t {
     border: 1px solid;
 }
 
-button#sendMessage,button#replyMessage {
+button#MButton1,button#MButton2 {
     width: calc(50% - 2.4rem);
     position: relative;
     top: 2rem;
@@ -173,12 +173,12 @@ button#sendMessage,button#replyMessage {
     transition: .15s;
 }
 
-:is(button#sendMessage, button#replyMessage):hover {
+:is(button#MButton1,button#MButton2):hover {
     background: #444;
 }
 
-button#sendMessage::before {
-    content: '私信互动消息↓';
+button#MButton1::before {
+    content: '功能性↓';
     position: absolute;
     top: -2.5rem;
     left: 0%;
