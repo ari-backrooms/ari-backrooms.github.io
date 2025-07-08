@@ -233,3 +233,18 @@ div#ui-theme-choose p a {
     border-bottom: 1px solid #0002;
     margin: 1rem 0;
 }
+
+button#button {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 1.2rem 3.5rem;
+    margin-top: 3rem;
+    display: flex;
+    margin: 3rem auto;
+    border: 1px solid lightblue;
+}
+
+button#button:active {
+    background: darkblue;
+}
