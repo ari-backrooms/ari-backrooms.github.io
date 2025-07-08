@@ -67,6 +67,7 @@ $(function(){
           delete localStorage.login_0x89;
           delete localStorage.login_0x90;
           delete localStorage.login_0x91;
+          history.go()
         });
         fetch('https://api.codetabs.com/v1/proxy/?quest=https://raw.githubusercontent.com/ari-backrooms/ari-backrooms.github.io/main/file/members.json').then((r)=> r.json()).then((r)=>{
           for (var i = 0;i < r.MasterAdmins.length;i++) {
